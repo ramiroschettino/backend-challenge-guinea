@@ -1,0 +1,28 @@
+# Binarios
+*.exe
+api
+consumer
+
+# RESULTADOS de tests (NO commitear)
+*.test
+*.out
+coverage.out        # ← Resultado de cobertura
+coverage.html       # ← Reporte HTML
+
+# Variables de entorno
+.env
+.env.local
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporales
+tmp/
