@@ -10,7 +10,7 @@ up: ## Levanta todos los servicios
 	@echo "Ejecutando migraciones..."
 	@make migrate
 
-down: ## Detiene todos los servicios
+down: ## Frena todos los servicios
 	docker-compose down
 
 restart: ## Reinicia todos los servicios

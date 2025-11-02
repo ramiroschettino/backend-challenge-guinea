@@ -1,5 +1,4 @@
 services:
-  # Base de datos PostgreSQL
   postgres:
     image: postgres:15-alpine
     container_name: backend_postgres
@@ -17,7 +16,6 @@ services:
       timeout: 5s
       retries: 5
 
-  # RabbitMQ para mensajería asíncrona
   rabbitmq:
     image: rabbitmq:3-management-alpine
     container_name: backend_rabbitmq
@@ -25,8 +23,8 @@ services:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
     ports:
-      - "5672:5672"   # Puerto AMQP (aplicación)
-      - "15672:15672" # Management UI (http://localhost:15672)
+      - "5672:5672"  
+      - "15672:15672" 
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
     healthcheck:
@@ -35,7 +33,6 @@ services:
       timeout: 5s
       retries: 5
 
-  # API REST (escribe en DB y publica eventos)
   api:
     build:
       context: .
@@ -62,7 +59,6 @@ services:
       - .:/app
     command: ["go", "run", "cmd/api/main.go"]
 
-  # Consumer (escucha eventos y actualiza proyecciones)
   consumer:
     build:
       context: .
@@ -86,7 +82,6 @@ services:
       - .:/app
     command: ["go", "run", "cmd/consumer/main.go"]
 
-# Volúmenes persistentes
 volumes:
   postgres_data:
   rabbitmq_data:
