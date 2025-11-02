@@ -68,16 +68,16 @@ func validatePassword(password string) error {
 	}
 	
 	if !hasUpper {
-		return errors.New("password must contain at least one uppercase letter")
+		return errors.New("la contraseña debe al menos una mayuscula")
 	}
 	if !hasLower {
-		return errors.New("password must contain at least one lowercase letter")
+		return errors.New("la contraseña debe al menos una minuscula")
 	}
 	if !hasNumber {
-		return errors.New("password must contain at least one number")
+		return errors.New("la contraseña debe tener al menos un número")
 	}
 	if !hasSpecial {
-		return errors.New("password must contain at least one special character")
+		return errors.New("La contraseña debe tener al menos un caracter especial")
 	}
 	
 	return nil
