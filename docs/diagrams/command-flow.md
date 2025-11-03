@@ -161,7 +161,3 @@ git push origin main
 - ✅ Ejemplos con tiempos reales
 - ✅ Admite que hay un 1% de casos donde puede fallar
 - ✅ Usa lenguaje normal ("en background", "súper rápidas")
-
----
-
-¿Quieres que ahora **probemos el proyecto** para asegurarnos que todo funciona? O prefieres que revisemos algo más de la documentación?
