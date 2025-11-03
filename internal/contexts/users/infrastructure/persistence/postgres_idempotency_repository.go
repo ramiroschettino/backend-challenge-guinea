@@ -29,6 +29,7 @@ func (r *PostgresIdempotencyRepository) IsProcessed(ctx context.Context, key, te
 	}
 
 	return true, result, nil 
+}
 
 func (r *PostgresIdempotencyRepository) Store(ctx context.Context, key, tenantID, result string) error {
 	query := `
