@@ -1,6 +1,6 @@
 # ADR 002: Por qué separamos lectura y escritura (CQRS)
 
-**Fecha**: 2024-10-31
+**Fecha**: 2025-11-02
 
 ## El Problema
 
@@ -11,8 +11,7 @@ En un CRUD normal:
 
 Y el challenge pedía específicamente CQRS.
 
-## Lo que decidimos
-
+## Lo que decidí
 Separar en dos modelos:
 
 **Para escribir:**

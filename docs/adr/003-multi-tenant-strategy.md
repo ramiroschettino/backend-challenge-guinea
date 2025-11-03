@@ -1,6 +1,6 @@
 # ADR 003: Cómo manejamos múltiples clientes (Multi-tenant)
 
-**Fecha**: 2024-10-31
+**Fecha**: 2025-11-02
 
 ## El Problema
 
@@ -9,7 +9,7 @@ El sistema tiene que soportar varios clientes (tenants):
 - Cada tenant puede tener configuraciones diferentes
 - No queremos tener 100 bases de datos si tenemos 100 clientes
 
-## Lo que decidimos
+## Lo que decidí
 
 Usar **un solo PostgreSQL pero filtrar todo por `tenant_id`**.
 

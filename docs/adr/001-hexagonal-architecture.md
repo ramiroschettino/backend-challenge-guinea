@@ -1,6 +1,6 @@
 # ADR 001: Por qué usamos Arquitectura Hexagonal
 
-**Fecha**: 2024-10-31
+**Fecha**: 2025-11-02
 
 ## El Problema
 
@@ -9,7 +9,7 @@ Necesitábamos una forma de organizar el código para que:
 - Podamos hacer tests sin levantar bases de datos
 - Si mañana cambiamos de PostgreSQL a MySQL, no tengamos que reescribir todo
 
-## Lo que decidimos
+## Lo que decidi
 
 Usar Arquitectura Hexagonal (también llamada Ports & Adapters).
 
