@@ -50,7 +50,7 @@ backend-challenge-guinea/
 
 1. **Clonar el repositorio**
 ```bash
-git clone <tu-repo>
+git clone https://github.com/ramiroschettino/backend-challenge-guinea.git
 cd backend-challenge-guinea
 ```
 
