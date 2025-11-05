@@ -1,5 +1,5 @@
 
-FROM golang:1.21-alpine AS builder
+FROM golang:1.24-alpine AS builder
 
 WORKDIR /app
 
@@ -13,7 +13,7 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o api cmd/api/main.go
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o consumer cmd/consumer/main.go
 
-FROM golang:1.21-alpine AS development
+FROM golang:1.24-alpine AS development
 
 WORKDIR /app
 
