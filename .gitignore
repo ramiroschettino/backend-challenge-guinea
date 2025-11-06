@@ -1,13 +1,11 @@
 # Binarios
 *.exe
-api
-consumer
 
 # RESULTADOS de tests (NO commitear)
 *.test
 *.out
-coverage.out        # ← Resultado de cobertura
-coverage.html       # ← Reporte HTML
+coverage.out
+coverage.html
 
 # Variables de entorno
 .env
