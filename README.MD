@@ -56,7 +56,7 @@ cd backend-challenge-guinea
 
 2. **Configurar variables de entorno**
 ```bash
-cp .env.sample .env
+copy .env.example .env
 # Editar .env si es necesario (los valores por defecto funcionan)
 ```
 
@@ -87,68 +87,98 @@ make migrate-down      # Revertir última migración
 make clean             # Limpiar todo (containers, volumes, cache)
 ```
 
-## 📡 Endpoints
+# 📡 Endpoints
 
-### Health Checks
-```bash
-# Verificar que la API está viva
-curl http://localhost:8080/health
+## Health Checks
 
-# Verificar que las dependencias están listas
-curl http://localhost:8080/ready
+### Verificar que la API está viva
+```
+GET http://localhost:8080/health
 ```
 
-### Users API
-
-**Crear Usuario**
-```bash
-curl -X POST http://localhost:8080/api/v1/users \
-  -H "Content-Type: application/json" \
-  -H "X-Tenant-Id: tenant-1" \
-  -H "X-Idempotency-Key: unique-key-123" \
-  -d '{
-    "name": "John Doe",
-    "email": "john@example.com",
-    "password": "SecurePass123!",
-    "display_name": "Johnny"
-  }'
+### Verificar que las dependencias están listas
+```
+GET http://localhost:8080/ready
 ```
 
-**Obtener Usuario**
-```bash
-curl http://localhost:8080/api/v1/users/{user_id} \
-  -H "X-Tenant-Id: tenant-1"
+---
+
+## Users API
+
+### Crear Usuario
+
+```
+POST http://localhost:8080/api/v1/users
+
+Headers:
+Content-Type: application/json
+X-Tenant-Id: tenant-1
+X-Idempotency-Key: unique-key-123
+
+Body:
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "SecurePass123!",
+  "display_name": "Johnny"
+}
 ```
 
-### Auth API
+### Obtener Usuario
 
-**Login**
-```bash
-# Primero crea un usuario
-curl -X POST http://localhost:8080/api/v1/users \
-  -H "Content-Type: application/json" \
-  -H "X-Tenant-Id: tenant-1" \
-  -d '{
-    "name": "John Doe",
-    "email": "john@example.com",
-    "password": "SecurePass123!"
-  }'
+```
+GET http://localhost:8080/api/v1/users/{user_id}
 
-# Luego haz login
-curl -X POST http://localhost:8080/api/v1/auth/login \
-  -H "Content-Type: application/json" \
-  -H "X-Tenant-Id: tenant-1" \
-  -d '{
-    "email": "john@example.com",
-    "password": "SecurePass123!"
-  }'
+Headers:
+X-Tenant-Id: tenant-1
+```
 
-# Respuesta:
-# {
-#   "token": "uuid-token-here",
-#   "user_id": "user-id-here",
-#   "expires_at": "2024-11-02T12:00:00Z"
-# }
+---
+
+## Auth API
+
+### Login
+
+**Paso 1: Primero crea un usuario**
+
+```
+POST http://localhost:8080/api/v1/users
+
+Headers:
+Content-Type: application/json
+X-Tenant-Id: tenant-1
+
+Body:
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "SecurePass123!"
+}
+```
+
+**Paso 2: Luego haz login**
+
+```
+POST http://localhost:8080/api/v1/auth/login
+
+Headers:
+Content-Type: application/json
+X-Tenant-Id: tenant-1
+
+Body:
+{
+  "email": "john@example.com",
+  "password": "SecurePass123!"
+}
+```
+
+**Respuesta:**
+```json
+{
+  "token": "uuid-token-here",
+  "user_id": "user-id-here",
+  "expires_at": "2025-11-02T12:00:00Z"
+}
 ```
 
 ### Headers Requeridos
