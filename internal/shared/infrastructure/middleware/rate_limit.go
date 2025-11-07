@@ -24,7 +24,7 @@ type bucket struct {
 	mu      sync.Mutex
 }
 
-// crea un rate limiter. ejemplo: 100 requests por minuto
+// aca creamos el rate limiter. ejemplo: 100 requests por minuto
 
 func NewRateLimiter(requests int, window time.Duration) *RateLimiter {
 	limiter := &RateLimiter{
@@ -50,7 +50,7 @@ func (rl *RateLimiter) Middleware() gin.HandlerFunc {
 
 		// Clave: tenant_id + path (ej: "tenant-1:/users")
 		key := fmt.Sprintf("%s:%s", tenantID, c.FullPath())
-		
+
 		if !rl.allow(key) {
 			c.JSON(http.StatusTooManyRequests, gin.H{
 				"error": "rate limit exceeded",
@@ -84,7 +84,7 @@ func (rl *RateLimiter) allow(key string) bool {
 	defer b.mu.Unlock()
 
 	now := time.Now()
-	
+
 	// Si pasó la ventana, resetear contador
 	if now.After(b.resetAt) {
 		b.count = 0
